@@ -22,7 +22,7 @@ jobs:
         id: cache-llvm
         with:
           path: ${{ env.LLVM_PATH }}
-          key: ${{ runner.os }}-llvm-${{ env.LLVM_VERSION }}
+          key: ${{ runner.os }}-llvm-${{ env.LLVM_VERSION }}-
       - name: Install LLVM
         uses: KyleMayes/install-llvm-action@v1
         with:
@@ -35,6 +35,8 @@ jobs:
           key: ${{ runner.os }}-${{ github.job }}-${{ matrix.config }}
       - name: Init CMake
         run: cmake -B cmake-build -G "Unix Makefiles" -D BUILD_SHARED_LIBS=OFF
+      - name: Dump Makefile
+        run: cat cmake-build/_deps/curl-build/Makefile
       - name: Build
         run: cmake --build cmake-build --target cpr_hello_world
       - name: Run
