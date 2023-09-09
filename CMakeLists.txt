@@ -10,7 +10,7 @@ include(FetchContent)
 FetchContent_Declare(
         cpr
         GIT_REPOSITORY https://github.com/libcpr/cpr.git
-        GIT_TAG d7cec83e9480253bacf11ff6441e9d00c08c71bf # Fix for branch "1.10.x"
+        GIT_TAG 1.10.x
 )
 
 add_executable(cpr_hello_world main.cpp)
