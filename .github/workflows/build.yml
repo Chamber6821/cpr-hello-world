@@ -28,6 +28,10 @@ jobs:
         with:
           version: ${{ env.LLVM_VERSION }}
           cached: ${{ steps.cache-llvm.outputs.cache-hit }}
+      - name: Setup cmake
+        uses: jwlawson/actions-setup-cmake@v1.14
+        with:
+          cmake-version: '3.26.x'
       - name: Cache CMake build folder
         uses: actions/cache@v3
         with:
